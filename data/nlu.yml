@@ -1,0 +1,398 @@
+version: "3.1"
+
+nlu:
+- intent: greet
+  examples: |
+    - नमस्ते
+    - हैलो
+    - हाय
+    - सुप्रभात
+    - शुभ दिन
+    - अभिवादन
+    - hello
+    - hi
+    - hey
+    - good morning
+    - good afternoon
+    - good evening
+    - namaste
+    - ନମସ୍କାର
+    - ଭଲ ଅଛନ୍ତି
+    - ଶୁଭ ସକାଳ
+    - ଶୁଭ ଅପରାହ୍ନ
+    - ଶୁଭ ସନ୍ଧ୍ୟା
+    - ହାଏ
+
+- intent: goodbye
+  examples: |
+    - अलविदा
+    - फिर मिलेंगे
+    - चलता हूँ
+    - बाय
+    - goodbye
+    - bye
+    - see you later
+    - see you around
+    - take care
+    - alvida
+    - ବିଦାୟ
+    - ଫେରିବା ପର୍ଯ୍ୟନ୍ତ
+    - ବାଏ
+    - ଯତ୍ନ ନିଅନ୍ତୁ
+    - ପୁଣି ଦେଖା ହେବ
+
+- intent: thank
+  examples: |
+    - धन्यवाद
+    - शुक्रिया
+    - आभार
+    - बहुत बहुत धन्यवाद
+    - thanks
+    - thank you
+    - thank you so much
+    - thanks a lot
+    - great thanks
+    - appreciate it
+    - ଧନ୍ୟବାଦ
+    - ବହୁତ ଧନ୍ୟବାଦ
+    - ଆପଣଙ୍କୁ ଧନ୍ୟବାଦ
+    - ଆପଣଙ୍କର ସାହାଯ୍ୟ ପାଇଁ ଧନ୍ୟବାଦ
+
+- intent: affirm
+  examples: |
+    - हाँ
+    - जी
+    - बिल्कुल
+    - सही है
+    - ठीक है
+    - yes
+    - yeah
+    - indeed
+    - that's right
+    - correct
+    - okay
+    - sure
+    - ହଁ
+    - ଠିକ୍ ଅଛି
+    - ନିଶ୍ଚିତ
+    - ସତ
+    - ହଉ
+    - सही है
+    - ठीक है
+    - yes
+    - yeah
+    - indeed
+    - that's right
+    - correct
+    - okay
+    - sure
+
+- intent: deny
+  examples: |
+    - नहीं
+    - कभी नहीं
+    - मुझे नहीं लगता
+    - शायद नहीं
+    - नकारात्मक
+    - no
+    - never
+    - I don't think so
+    - I disagree
+    - not really
+    - nope
+    - ନା
+    - କଦାପି ନୁହେଁ
+    - ମୁଁ ଭାବୁନାହିଁ
+    - ସମ୍ଭବତଃ ନୁହେଁ
+    - ମୁଁ ସହମତ ନୁହେଁ
+
+- intent: ask_preventive_healthcare
+  examples: |
+    - स्वस्थ रहने के लिए क्या करना चाहिए?
+    - बीमारी से बचने के उपाय
+    - निवारक स्वास्थ्य देखभाल क्या है?
+    - रोग से कैसे बचें?
+    - स्वास्थ्य की देखभाल के टिप्स बताइए
+    - स्वस्थ जीवनशैली के लिए सुझाव
+    - how to stay healthy?
+    - ways to prevent disease
+    - what is preventive healthcare?
+    - how to avoid getting sick?
+    - tips for health maintenance
+    - suggestions for healthy lifestyle
+    - how can I prevent [disease](disease)?
+    - preventive measures for [health_condition](health_condition)
+    - how to keep my [health_condition](health_condition) in check?
+    - daily habits for good health
+    - routine checkups importance
+    - ସୁସ୍ଥ ରହିବାକୁ କଣ କରିବା ଉଚିତ?
+    - ରୋଗ ପ୍ରତିରୋଧ କରିବାର ଉପାୟ
+    - ନିରୋଧକ ସ୍ୱାସ୍ଥ୍ୟସେବା କଣ?
+    - ରୋଗରୁ କିପରି ବଞ୍ଚିବା?
+    - ସୁସ୍ଥ ଜୀବନଶୈଳୀ ପାଇଁ ଟିପ୍ସ
+    - ଦୈନିକ ସୁସ୍ଥ ଅଭ୍ୟାସ
+
+- intent: ask_disease_symptoms
+  examples: |
+    - [मलेरिया](disease) के लक्षण क्या हैं?
+    - [डेंगू](disease) के संकेत
+    - [टाइफाइड](disease) कैसे पहचानें?
+    - [टीबी](disease) के प्रारंभिक लक्षण
+    - [बुखार](symptom) किस बीमारी का संकेत है?
+    - [खांसी](symptom) कब चिंता का विषय है?
+    - what are the symptoms of [malaria](disease)?
+    - signs of [dengue](disease)
+    - how to identify [typhoid](disease)?
+    - early symptoms of [TB](disease)
+    - what disease is indicated by [fever](symptom)?
+    - when is [cough](symptom) a concern?
+    - symptoms of [diabetes](disease)
+    - what are signs of [pneumonia](disease)
+    - how do I know if I have [cholera](disease)
+    - is [headache](symptom) serious?
+    - [diarrhea](symptom) in children
+    - causes of [joint pain](symptom)
+    - [ମ୍ୟାଲେରିଆ](disease)ର ଲକ୍ଷଣ କଣ?
+    - [ଡେଙ୍ଗୁ](disease)ର ସଂକେତ
+    - [ଟାଇଫଏଡ୍](disease) କିପରି ଚିହ୍ନିବେ?
+    - [ଯକ୍ଷ୍ମା](disease)ର ପ୍ରାରମ୍ଭିକ ଲକ୍ଷଣ
+    - [ଜ୍ୱର](symptom) କେଉଁ ରୋଗର ସଂକେତ?
+    - [କାଶ](symptom) କେବେ ଚିନ୍ତାର ବିଷୟ?
+    - [ମଧୁମେହ](disease)ର ଲକ୍ଷଣ
+
+- intent: ask_vaccination_schedule
+  examples: |
+    - बच्चों के टीकाकरण की अनुसूची
+    - [बच्चों](age_group) के लिए कौन से टीके जरूरी हैं?
+    - [शिशु](age_group) को कब-कब टीके लगवाने चाहिए?
+    - [पोलियो](vaccine) का टीका कब लगवाना चाहिए?
+    - [वयस्कों](age_group) के लिए आवश्यक टीके
+    - [गर्भवती महिलाओं](age_group) के लिए टीकाकरण
+    - vaccination schedule for children
+    - which vaccines are necessary for [children](age_group)?
+    - when should [infants](age_group) get vaccinated?
+    - when should I get [polio](vaccine) vaccine?
+    - essential vaccines for [adults](age_group)
+    - vaccinations for [pregnant women](age_group)
+    - when to get [measles](vaccine) shot
+    - immunization schedule for [newborn](age_group)
+    - is [tetanus](vaccine) vaccine necessary?
+    - [HPV](vaccine) vaccine age recommendations
+    - [flu](vaccine) shot frequency
+    - ପିଲାମାନଙ୍କ ପାଇଁ ଟୀକାକରଣ ସୂଚୀ
+    - [ଶିଶୁ](age_group)ମାନଙ୍କ ପାଇଁ କେଉଁ ଟୀକା ଜରୁରୀ?
+    - [ଶିଶୁ](age_group)ମାନଙ୍କୁ କେବେ ଟୀକା ଦିଆଯିବ?
+    - [ପୋଲିଓ](vaccine) ଟୀକା କେବେ ଦେବା ଉଚିତ?
+    - [ବୟସ୍କ](age_group)ମାନଙ୍କ ପାଇଁ ଆବଶ୍ୟକ ଟୀକା
+    - [ଗର୍ଭବତୀ ମହିଳା](age_group)ମାନଙ୍କ ପାଇଁ ଟୀକାକରଣ
+
+- intent: ask_health_tips
+  examples: |
+    - स्वस्थ रहने के लिए आहार
+    - नियमित व्यायाम के फायदे
+    - अच्छी नींद के लिए टिप्स
+    - तनाव कम करने के उपाय
+    - स्वस्थ जीवन के लिए दिनचर्या
+    - diet for staying healthy
+    - benefits of regular exercise
+    - tips for good sleep
+    - ways to reduce stress
+    - daily routine for healthy life
+    - how much water should I drink daily
+    - importance of physical activity
+    - healthy habits to develop
+    - how to improve immunity naturally
+    - mental health maintenance tips
+    - ସୁସ୍ଥ ରହିବାକୁ କିପରି ଖାଇବେ
+    - ନିୟମିତ ବ୍ୟାୟାମର ଉପକାରିତା
+    - ଭଲ ନିଦ ପାଇଁ ଟିପ୍ସ
+    - ଚାପ କମାଇବାର ଉପାୟ
+    - ସୁସ୍ଥ ଜୀବନ ପାଇଁ ଦିନଚର୍ଯ୍ୟା
+
+- intent: ask_common_illnesses
+  examples: |
+    - [गाँव](disease) में आम बीमारियाँ
+    - मौसमी बीमारियाँ और उनसे बचाव
+    - [बरसात](disease) में होने वाली बीमारियाँ
+    - [गर्मी](disease) से होने वाली स्वास्थ्य समस्याएँ
+    - सर्दी-जुकाम से कैसे बचें?
+    - common illnesses in [villages](disease)
+    - seasonal diseases and prevention
+    - diseases common in [rainy season](disease)
+    - health problems due to [heat](disease)
+    - how to avoid cold and flu?
+    - waterborne diseases in monsoon
+    - common childhood infections
+    - vector-borne diseases in my area
+    - airborne illnesses prevention
+    - diseases common in rural areas
+
+- intent: ask_medication_info
+  examples: |
+    - [पेरासिटामोल](medication) कब लेना चाहिए?
+    - [एंटीबायोटिक्स](medication) के दुष्प्रभाव
+    - [बुखार](symptom) की दवा
+    - [पेट दर्द](symptom) के लिए घरेलू उपचार
+    - दवाइयों के सेवन में सावधानियाँ
+    - when should I take [paracetamol](medication)?
+    - side effects of [antibiotics](medication)
+    - medicine for [fever](symptom)
+    - home remedies for [stomach pain](symptom)
+    - precautions while taking medications
+    - is it safe to take [aspirin](medication) daily?
+    - medicine interactions to avoid
+    - dosage information for [ibuprofen](medication)
+    - when to take medicine before or after food
+    - alternatives to [antibiotics](medication)
+    - [ପାରାସିଟାମଲ୍](medication) କେବେ ନେବା ଉଚିତ?
+    - [ଆଣ୍ଟିବାୟୋଟିକ୍ସ](medication) ର ପାର୍ଶ୍ୱ ପ୍ରତିକ୍ରିୟା
+    - [ଜ୍ୱର](symptom) ପାଇଁ ଔଷଧ
+    - [ପେଟ ଯନ୍ତ୍ରଣା](symptom) ପାଇଁ ଘରୋଇ ଉପଚାର
+    - ଔଷଧ ନେବାବେଳେ ସାବଧାନତା
+
+- intent: ask_emergency_symptoms
+  examples: |
+    - कब डॉक्टर से मिलना जरूरी है?
+    - गंभीर स्वास्थ्य समस्याओं के लक्षण
+    - तत्काल चिकित्सा सहायता कब लें?
+    - जीवन-घातक स्थितियाँ पहचानना
+    - [हृदय दौरा](disease) के संकेत
+    - [स्ट्रोक](disease) कैसे पहचानें?
+    - when is it necessary to see a doctor?
+    - signs of serious health problems
+    - when to seek immediate medical help?
+    - recognizing life-threatening conditions
+    - signs of [heart attack](disease)
+    - how to identify a [stroke](disease)?
+    - emergency symptoms in children
+    - when to call an ambulance
+    - danger signs during pregnancy
+    - severe allergic reaction symptoms
+    - warning signs of serious illness
+    - କେବେ ଡାକ୍ତରଙ୍କୁ ଦେଖାଇବା ଜରୁରୀ?
+    - ଗମ୍ଭୀର ସ୍ୱାସ୍ଥ୍ୟ ସମସ୍ୟାର ଲକ୍ଷଣ
+    - କେବେ ତୁରନ୍ତ ଚିକିତ୍ସା ସାହାଯ୍ୟ ନେବେ?
+    - ଜୀବନ-ଘାତକ ସ୍ଥିତି ଚିହ୍ନିବା
+    - [ହୃଦଘାତ](disease) ର ଲକ୍ଷଣ
+    - [ପକ୍ଷାଘାତ](disease) କିପରି ଚିହ୍ନିବେ?
+
+- intent: ask_maternal_health
+  examples: |
+    - गर्भावस्था में स्वास्थ्य देखभाल
+    - गर्भवती महिला के लिए आहार
+    - प्रसव पूर्व देखभाल महत्वपूर्ण क्यों है?
+    - स्तनपान के फायदे
+    - प्रसव के बाद देखभाल
+    - pregnancy healthcare
+    - diet for pregnant women
+    - why is prenatal care important?
+    - benefits of breastfeeding
+    - postnatal care
+    - what to expect during pregnancy
+    - safe delivery preparations
+    - signs of pregnancy complications
+    - nutrition during pregnancy
+    - vaccination during pregnancy
+
+- intent: ask_child_health
+  examples: |
+    - बच्चों के स्वास्थ्य की देखभाल
+    - शिशु के विकास के पड़ाव
+    - बच्चों में कुपोषण के लक्षण
+    - बच्चों के लिए संतुलित आहार
+    - child healthcare
+    - infant development milestones
+    - signs of malnutrition in children
+    - balanced diet for children
+    - common childhood illnesses
+    - child growth monitoring
+    - when to worry about child fever
+    - healthy weight for children
+    - developmental delays in toddlers
+    - importance of play for children
+
+- intent: ask_elderly_care
+  examples: |
+    - बुजुर्गों की स्वास्थ्य देखभाल
+    - वृद्धावस्था में पोषण
+    - बुजुर्गों में आम स्वास्थ्य समस्याएँ
+    - वृद्ध व्यक्तियों के लिए व्यायाम
+    - healthcare for elderly
+    - nutrition in old age
+    - common health issues in elderly
+    - exercises for older people
+    - fall prevention in elderly
+    - memory care for seniors
+    - chronic disease management in elderly
+    - medication management for older people
+    - healthy aging tips
+    - elder care essentials
+
+- intent: ask_nutrition
+  examples: |
+    - संतुलित आहार क्या है?
+    - पौष्टिक खाद्य पदार्थ
+    - [आयरन](nutrition_type) से भरपूर खाद्य पदार्थ
+    - [प्रोटीन](nutrition_type) के स्रोत
+    - [विटामिन](nutrition_type) की कमी के लक्षण
+    - what is a balanced diet?
+    - nutritious foods
+    - foods rich in [iron](nutrition_type)
+    - sources of [protein](nutrition_type)
+    - signs of [vitamin](nutrition_type) deficiency
+    - importance of hydration
+    - local superfoods available
+    - affordable nutrition options
+    - diet for specific health conditions
+    - nutrition myths debunked
+
+- intent: ask_mental_health
+  examples: |
+    - तनाव से निपटने के तरीके
+    - अवसाद के लक्षण
+    - मानसिक स्वास्थ्य का महत्व
+    - चिंता को कम करने के उपाय
+    - ways to deal with stress
+    - symptoms of depression
+    - importance of mental health
+    - ways to reduce anxiety
+    - sleep and mental health connection
+    - meditation benefits for mind
+    - when to seek mental health help
+    - coping with grief and loss
+    - mental wellness activities
+    - building emotional resilience
+
+- intent: ask_general_healthcare
+  examples: |
+    - स्वस्थ जीवनशैली के लिए टिप्स
+    - स्वास्थ्य जांच कब करवानी चाहिए?
+    - आँखों की देखभाल
+    - दांतों की स्वच्छता
+    - स्वस्थ त्वचा के लिए सुझाव
+    - tips for healthy lifestyle
+    - when should health checkups be done?
+    - eye care
+    - dental hygiene
+    - suggestions for healthy skin
+    - importance of handwashing
+    - how to maintain good hygiene
+    - chronic disease prevention
+    - environmental health factors
+    - healthcare access in rural areas
+
+- intent: out_of_scope
+  examples: |
+    - मौसम कैसा है?
+    - खाना पकाने की विधि
+    - फिल्म की समीक्षा
+    - मोबाइल फोन की कीमत
+    - how is the weather?
+    - cooking recipe
+    - movie review
+    - mobile phone price
+    - tell me a joke
+    - what's the capital of France
+    - solve this math problem
+    - translate this sentence
+    - who is the prime minister

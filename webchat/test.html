@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Rasa Test</title>
+</head>
+<body>
+    <h1>Rasa Connection Test</h1>
+    <button id="testBtn">Test Connection</button>
+    <div id="result"></div>
+    
+    <script>
+        document.getElementById('testBtn').addEventListener('click', function() {
+            const resultDiv = document.getElementById('result');
+            resultDiv.innerHTML = "Testing connection...";
+            
+            fetch('http://localhost:5005/webhooks/rest/webhook', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    sender: 'tester',
+                    message: 'hello'
+                })
+            })
+            .then(response => {
+                resultDiv.innerHTML += "<br>Status: " + response.status;
+                return response.json();
+            })
+            .then(data => {
+                resultDiv.innerHTML += "<br>Success! Received data: " + JSON.stringify(data);
+            })
+            .catch(error => {
+                resultDiv.innerHTML += "<br>Error: " + error.message;
+            });
+        });
+    </script>
+</body>
+</html>

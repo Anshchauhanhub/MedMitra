@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MedMitra - Multilingual Healthcare Assistant</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="chat-container">
+    <div class="chat-header">
+      <h1>MedMitra</h1>
+      <p>Your Multilingual Healthcare Education Assistant</p>
+      <div class="language-selector">
+        <select id="language-select">
+          <option value="all">All Languages</option>
+          <option value="english">English</option>
+          <option value="hindi">Hindi</option>
+          <option value="odia">Odia</option>
+        </select>
+      </div>
+    </div>
+    <div class="chat-messages" id="chat-messages">
+      <div class="message bot">
+        <div class="message-content">
+          <div class="language-section odia">
+            <strong>ଓଡ଼ିଆ:</strong><br>
+            ନମସ୍କାର! ମୁଁ MedMitra, ଆପଣଙ୍କର ସ୍ୱାସ୍ଥ୍ୟ ସହାୟକ। ମୁଁ ଆପଣଙ୍କୁ ନିରୋଧକ ସ୍ୱାସ୍ଥ୍ୟସେବା, ରୋଗ ଲକ୍ଷଣ ଏବଂ ଟୀକାକରଣ ସୂଚୀ ବିଷୟରେ ସୂଚନା ଦେଇପାରିବି। ମୁଁ ଆପଣଙ୍କୁ କିପରି ସାହାଯ୍ୟ କରିପାରିବି?
+          </div>
+          <div class="language-section hindi">
+            <strong>हिंदी:</strong><br>
+            नमस्ते! मैं MedMitra हूँ, आपका स्वास्थ्य सहायक। मैं आपको निवारक स्वास्थ्य देखभाल, बीमारी के लक्षण और टीकाकरण अनुसूची के बारे में जानकारी दे सकता हूँ। मैं आपकी कैसे मदद कर सकता हूँ?
+          </div>
+          <div class="language-section english">
+            <strong>English:</strong><br>
+            Hello! I am MedMitra, your health assistant. I can provide information about preventive healthcare, disease symptoms, and vaccination schedules. How can I help you today?
+          </div>
+        </div>
+      </div>
+    </div>
+        <div class="chat-body">
+      <div id="chat-messages">
+        <!-- Messages will be added here -->
+        <div class="message bot">
+          <div class="message-content">
+            Welcome to MedMitra! I can help you with healthcare information in Hindi, English, and Odia. What would you like to know?
+          </div>
+        </div>
+      </div>
+      <div class="chat-input">
+        <input type="text" id="user-input" placeholder="Type your message here...">
+        <button id="send-btn">Send</button>
+      </div>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>

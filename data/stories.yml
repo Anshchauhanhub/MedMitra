@@ -1,0 +1,87 @@
+version: "3.1"
+
+stories:
+- story: greet and inform about capabilities
+  steps:
+  - intent: greet
+  - action: utter_greet
+
+- story: say goodbye
+  steps:
+  - intent: goodbye
+  - action: utter_goodbye
+
+- story: thank the bot
+  steps:
+  - intent: thank
+  - action: utter_thank
+
+- story: out of scope
+  steps:
+  - intent: out_of_scope
+  - action: utter_out_of_scope
+
+- story: preventive healthcare
+  steps:
+  - intent: ask_preventive_healthcare
+  - action: action_provide_preventive_healthcare
+
+- story: disease symptoms
+  steps:
+  - intent: ask_disease_symptoms
+  - action: action_provide_disease_symptoms
+
+- story: vaccination schedule
+  steps:
+  - intent: ask_vaccination_schedule
+  - action: action_provide_vaccination_schedule
+
+- story: health tips
+  steps:
+  - intent: ask_health_tips
+  - action: action_provide_health_tips
+
+- story: common illnesses
+  steps:
+  - intent: ask_common_illnesses
+  - action: action_provide_common_illnesses
+
+- story: medication info
+  steps:
+  - intent: ask_medication_info
+  - action: action_provide_medication_info
+
+- story: emergency symptoms
+  steps:
+  - intent: ask_emergency_symptoms
+  - action: action_provide_emergency_symptoms
+
+- story: maternal health
+  steps:
+  - intent: ask_maternal_health
+  - action: action_provide_maternal_health
+
+- story: child health
+  steps:
+  - intent: ask_child_health
+  - action: action_provide_child_health
+
+- story: elderly care
+  steps:
+  - intent: ask_elderly_care
+  - action: action_provide_elderly_care
+
+- story: nutrition
+  steps:
+  - intent: ask_nutrition
+  - action: action_provide_nutrition
+
+- story: mental health
+  steps:
+  - intent: ask_mental_health
+  - action: action_provide_mental_health
+
+- story: general healthcare
+  steps:
+  - intent: ask_general_healthcare
+  - action: action_provide_general_healthcare

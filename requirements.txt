@@ -1,0 +1,4 @@
+rasa
+rasa-sdk
+google-generativeai
+python-dotenv

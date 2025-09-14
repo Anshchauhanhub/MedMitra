@@ -1,0 +1,130 @@
+version: "3.1"
+
+intents:
+  - greet
+  - goodbye
+  - thank
+  - affirm
+  - deny
+  - ask_preventive_healthcare
+  - ask_disease_symptoms
+  - ask_vaccination_schedule
+  - ask_health_tips
+  - ask_common_illnesses
+  - ask_medication_info
+  - ask_emergency_symptoms
+  - ask_maternal_health
+  - ask_child_health
+  - ask_elderly_care
+  - ask_nutrition
+  - ask_mental_health
+  - ask_general_healthcare
+  - out_of_scope
+
+entities:
+  - disease
+  - symptom
+  - vaccine
+  - age_group
+  - health_condition
+  - nutrition_type
+  - medication
+
+slots:
+  disease:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: disease
+  symptom:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: symptom
+  vaccine:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: vaccine
+  age_group:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: age_group
+  health_condition:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: health_condition
+  nutrition_type:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: nutrition_type
+  medication:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: medication
+
+responses:
+  utter_greet:
+    - text: "नमस्ते! मैं MedMitra हूँ, आपका स्वास्थ्य सहायक। मैं आपको निवारक स्वास्थ्य देखभाल, बीमारी के लक्षण और टीकाकरण अनुसूची के बारे में जानकारी दे सकता हूँ। मैं आपकी कैसे मदद कर सकता हूँ?"
+    - text: "Hello! I am MedMitra, your health assistant. I can provide information about preventive healthcare, disease symptoms, and vaccination schedules. How can I help you today?"
+    - text: "ନମସ୍କାର! ମୁଁ MedMitra, ଆପଣଙ୍କର ସ୍ୱାସ୍ଥ୍ୟ ସହାୟକ। ମୁଁ ଆପଣଙ୍କୁ ନିରୋଧକ ସ୍ୱାସ୍ଥ୍ୟସେବା, ରୋଗ ଲକ୍ଷଣ ଏବଂ ଟୀକାକରଣ ସୂଚୀ ବିଷୟରେ ସୂଚନା ଦେଇପାରିବି। ମୁଁ ଆପଣଙ୍କୁ କିପରି ସାହାଯ୍ୟ କରିପାରିବି?"
+
+  utter_goodbye:
+    - text: "अलविदा! अपना ख्याल रखें और स्वस्थ रहें। जब भी आपको स्वास्थ्य जानकारी की आवश्यकता हो, मैं यहां हूं।"
+    - text: "Goodbye! Take care and stay healthy. Whenever you need health information, I'm here to help."
+    - text: "ବିଦାୟ! ନିଜର ଯତ୍ନ ନିଅନ୍ତୁ ଏବଂ ସୁସ୍ଥ ରୁହନ୍ତୁ। ଯେତେବେଳେ ଆପଣଙ୍କୁ ସ୍ୱାସ୍ଥ୍ୟ ସୂଚନାର ଆବଶ୍ୟକତା ହୁଏ, ମୁଁ ଏଠାରେ ସାହାଯ୍ୟ କରିବାକୁ ଅଛି।"
+
+  utter_thank:
+    - text: "आपका स्वागत है! मुझे आपकी सहायता करके खुशी हुई।"
+    - text: "You're welcome! I'm glad I could help you."
+    - text: "ସ୍ୱାଗତମ୍! ମୁଁ ଆପଣଙ୍କୁ ସାହାଯ୍ୟ କରିପାରିଥିବାରୁ ଖୁସି।"
+
+  utter_default:
+    - text: "मुझे समझ नहीं आया। क्या आप कृपया दूसरे शब्दों में पूछ सकते हैं?"
+    - text: "I'm sorry, I didn't understand that. Could you please rephrase your question?"
+    - text: "ମୁଁ ବୁଝିପାରିଲି ନାହିଁ। ଆପଣ ଦୟାକରି ଆପଣଙ୍କର ପ୍ରଶ୍ନକୁ ଅନ୍ୟ ଶବ୍ଦରେ ପଚାରିପାରିବେ କି?"
+
+  utter_ask_rephrase:
+    - text: "मुझे आपका प्रश्न समझने में कठिनाई हो रही है। क्या आप इसे दूसरे तरीके से बता सकते हैं?"
+    - text: "I'm having trouble understanding your question. Could you explain it differently?"
+    - text: "ମୁଁ ଆପଣଙ୍କର ପ୍ରଶ୍ନ ବୁଝିବାରେ ଅସୁବିଧା ଅନୁଭବ କରୁଛି। ଆପଣ ଏହାକୁ ଭିନ୍ନ ଭାବରେ ବର୍ଣ୍ଣନା କରିପାରିବେ କି?"
+
+  utter_iamabot:
+    - text: "मैं एक AI स्वास्थ्य सहायक हूं। मैं आपको स्वास्थ्य जानकारी प्रदान कर सकता हूं, लेकिन मैं डॉक्टर नहीं हूं। गंभीर स्वास्थ्य चिंताओं के लिए, कृपया चिकित्सा पेशेवर से परामर्श करें।"
+    - text: "I am an AI health assistant. I can provide health information, but I am not a doctor. For serious health concerns, please consult a medical professional."
+    - text: "ମୁଁ ଏକ AI ସ୍ୱାସ୍ଥ୍ୟ ସହାୟକ ଅଟେ। ମୁଁ ଆପଣଙ୍କୁ ସ୍ୱାସ୍ଥ୍ୟ ସୂଚନା ପ୍ରଦାନ କରିପାରେ, କିନ୍ତୁ ମୁଁ ଡାକ୍ତର ନୁହେଁ। ଗମ୍ଭୀର ସ୍ୱାସ୍ଥ୍ୟ ଚିନ୍ତା ପାଇଁ, ଦୟାକରି ଚିକିତ୍ସା ପେଶାଦାରଙ୍କ ସହିତ ପରାମର୍ଶ କରନ୍ତୁ।"
+
+  utter_out_of_scope:
+    - text: "मुझे खेद है, लेकिन यह मेरे ज्ञान क्षेत्र से बाहर है। मैं आपको स्वास्थ्य से संबंधित जानकारी प्रदान कर सकता हूं।"
+    - text: "I'm sorry, but that's outside my area of expertise. I can provide you with health-related information."
+    - text: "କ୍ଷମା କରିବେ, କିନ୍ତୁ ତାହା ମୋର ଜ୍ଞାନ କ୍ଷେତ୍ର ବାହାରେ ଅଛି। ମୁଁ ଆପଣଙ୍କୁ ସ୍ୱାସ୍ଥ୍ୟ ସମ୍ବନ୍ଧୀୟ ସୂଚନା ପ୍ରଦାନ କରିପାରିବି।"
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
+
+actions:
+  - action_provide_preventive_healthcare
+  - action_provide_disease_symptoms
+  - action_provide_vaccination_schedule
+  - action_provide_health_tips
+  - action_provide_common_illnesses
+  - action_provide_medication_info
+  - action_provide_emergency_symptoms
+  - action_provide_maternal_health
+  - action_provide_child_health
+  - action_provide_elderly_care
+  - action_provide_nutrition
+  - action_provide_mental_health
+  - action_provide_general_healthcare
