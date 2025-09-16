@@ -1,0 +1,49 @@
+{
+    "Health in India": {
+      "Health Overview": {
+        "Life Expectancy": {
+          "1975": "49.7 years",
+          "2020": "over 70 years"
+        },
+        "Sanitation": {
+          "2018": "Approximately 95.76% of households had toilets"
+        },
+        "Malnutrition": "More than one-third of the world's malnourished children live in India",
+        "Leading Causes of Death": [
+          "Ischemic heart disease",
+          "chronic obstructive pulmonary disease",
+          "stroke",
+          "diabetes"
+        ]
+      },
+      "Public Health System": {
+        "Structure": "Organized into three levels",
+        "Levels": {
+          "Primary Level": [
+            "Sub Centres",
+            "Primary Health Centres (PHCs)"
+          ],
+          "Secondary Level": [
+            "Community Health Centres (CHCs)",
+            "smaller Sub-District hospitals"
+          ],
+          "Tertiary Level": [
+            "larger hospitals",
+            "medical colleges"
+          ]
+        }
+      },
+      "Ministry of Health and Family Welfare": {
+        "Responsibilities": [
+          "Health policy",
+          "family planning"
+        ],
+        "Key Organizations and Programs": [
+          "National AIDS Control Organisation (NACO)",
+          "National Board of Examinations in Medical Sciences (NBE)",
+          "Universal Immunisation Programme (UIP)",
+          "National Health Mission (NHM)"
+        ]
+      }
+    }
+  }
