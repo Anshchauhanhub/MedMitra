@@ -1,24 +1,34 @@
-from langchain_core.prompts import ChatPromptTemplate
-from langchain_core.output_parsers import StrOutputParser
+# Standard library imports
+import os
+import uuid
+
+# LangChain imports
 from langchain_chroma import Chroma
-from service.prompts import prompt
-from service.config import config
 from langchain_community.document_loaders import JSONLoader
+from langchain_core.messages import AIMessage, HumanMessage, SystemMessage
+from langchain_core.output_parsers import StrOutputParser
+from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
 from langchain_core.runnables import RunnablePassthrough
 from langchain_text_splitters import RecursiveCharacterTextSplitter
-import os
-import hashlib
+
+# Local application imports
+from service.config import config
+from service.prompts import prompt
 
 # Path for the persistent ChromaDB
 CHROMA_PERSIST_DIRECTORY = os.path.join("service", "data", "chroma_db")
 COLLECTION_NAME = "disease_symptoms"
 
-chat_prompt = ChatPromptTemplate.from_template(prompt)
+chat_prompt = ChatPromptTemplate.from_messages([
+    SystemMessage(content=prompt),
+    MessagesPlaceholder(variable_name="chat_history"),
+    ("human", "{question}")
+])
+
 output_parser = StrOutputParser()
 
-# Load or create ChromaDB instance (only if it doesn't already exist)
 def get_or_create_vectorstore():
-    """Get existing ChromaDB or create a new one if needed"""
+
     try:
         # Try to load existing database first
         vectorstore = Chroma(
@@ -34,10 +44,8 @@ def get_or_create_vectorstore():
     except Exception as e:
         print(f"Error loading ChromaDB: {e}")
     
-    # If we get here, we need to create a new database
     print("Creating new ChromaDB from source data...")
     
-    # Load JSON data
     loader = JSONLoader(
         file_path="service/data/disease_symptoms.json",
         jq_schema=".records[]",
@@ -55,62 +63,64 @@ def get_or_create_vectorstore():
         persist_directory=CHROMA_PERSIST_DIRECTORY,
         collection_name=COLLECTION_NAME,
     )
-    # Persist data to disk
     vectorstore.persist()
     return vectorstore
 
-# Initialize the vectorstore
 vectorstore = get_or_create_vectorstore()
 
-def main(query):
+# Chat histories
+chat_sessions = {}
+
+def main(query, thread_id=None):
     """ Perform a vector search and return the most relevant document """
-    # Use the persisted ChromaDB for retrieval
+    # Generate a new thread_id if none is provided
+    if thread_id is None:
+        thread_id = str(uuid.uuid4())
+    
+    # Initialize chat history for new thread
+    if thread_id not in chat_sessions:
+        chat_sessions[thread_id] = []
+    
+    # Get the chat history for this thread
+    chat_history = chat_sessions[thread_id]
+    
+    # ChromaDB for retrieval
     retriever = vectorstore.as_retriever(search_kwargs={"k": 1})
     
     retrieval_chain = (
         {
             "context": retriever,
             "question": RunnablePassthrough(),
+            "chat_history": lambda _: chat_history
         }
         | chat_prompt
         | config.llm
-        | StrOutputParser()
+        | output_parser
     )
-    return retrieval_chain.invoke(query)
-
-def add_document(disease_data):
-    """
-    Add a new document to the ChromaDB vectorstore
+    response = retrieval_chain.invoke(query)
     
-    :param disease_data: A dictionary with Disease and Symptoms keys
-    :return: True if successful, False otherwise
-    """
-    try:
-        from langchain_core.documents import Document
-        
-        # Convert to Document format with proper text formatting for better matching
-        symptoms_text = ", ".join(disease_data.get("Symptoms", []))
-        content = f"Disease: {disease_data.get('Disease', '')}\nSymptoms: {symptoms_text}"
-        
-        doc = Document(
-            page_content=content,
-            metadata=disease_data
-        )
-        
-        # Generate a unique ID based on the content
-        doc_id = f"doc_{hashlib.md5(content.encode()).hexdigest()}"
-        
-        # Add to the vectorstore with explicit ID
-        vectorstore.add_documents([doc], ids=[doc_id])
-        
-        # Persist data to disk
-        vectorstore.persist()
-        return True
-    except Exception as e:
-        print(f"Error adding document to ChromaDB: {e}")
-        return False
+    # Update chat history with the new exchange
+    chat_history.append(HumanMessage(content=query))
+    chat_history.append(AIMessage(content=response))
+    
+    # Session update
+    chat_sessions[thread_id] = chat_history
+    
+    return response, thread_id
+
 
 if __name__ == "__main__":
+
+    session_id = str(uuid.uuid4())
+    print(f"Test session ID: {session_id}")
+    
     query = "I am feeling fever and headache with mild cough and sore throat"
-    response = main(query)
-    print(response)
+    
+    response, session_id = main(query, session_id)
+    print(f"Response: {response}")
+    
+    # Test with a follow-up question
+    follow_up = "What should I drink to feel better?"
+    print(f"\nFollow-up question: {follow_up}")
+    response, session_id = main(follow_up, session_id)
+    print(f"Follow-up response: {response}")

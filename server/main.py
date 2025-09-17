@@ -8,14 +8,16 @@ async def health_chat_post(request: Request):
     try:
         data = await request.json()
         user_input = data.get("message", "").strip()
+        session_id = data.get("session_id", None)
         
         if not user_input:
             return {"error": "Health query cannot be empty"}
         
-        response = main(user_input)
+        result = main(user_input, session_id)
         
         return {
-            "result": response,
+            "result": result["response"],
+            "session_id": result["session_id"]
         }
     
     except Exception as e:
