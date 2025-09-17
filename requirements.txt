@@ -1,28 +1,15 @@
-# Core environment
 python-dotenv
 fastapi
 uvicorn
+colorama
 
-# LangChain ecosystem
-langchain-core
-langchain-groq
+langchain>=0.0.335
+langchain-core>=0.1.27
 langchain-google-genai
 langchain-community
 langgraph
 langchain-chroma
+jq
+langchain-chroma>=0.1.2
 
-# Document handling
-PyPDF2
-pdfminer.six
-
-# Embeddings and text splitting
-tiktoken
-
-# Optional: For local vector store persistence
-chromadb
-
-# CORS support
-aiohttp
-
-# Typing and utilities
-typing-extensions
+faiss-cpu
